@@ -40,24 +40,6 @@ exports.signup = (req,res,next) => {
                             
                     }
                 });
-                // const user = new User({
-                //                 name: req.body.name,
-                //                 email: req.body.email,
-                //                 password: req.body.password
-                //             });
-                //             user.save()
-                //                 .then(result => {
-                //                     console.log(result);
-                //                     res.status(201).json({
-                //                         'message':'User Created'
-                //                     });
-                //                 })
-                //                 .catch(err => {
-                //                     console.log(err);
-                //                     res.status(500).json({
-                //                         error : err
-                //                     });
-                //                 });
             }
         })
         .catch(err => {
@@ -84,3 +66,20 @@ exports.listusers = (req,res,next) => {
         })
 };
 
+exports.deleteuser = (req, res, next) => {
+    User.remove({_id:req.params.id})
+        .exec()
+        .then(result => {
+            console.log(result);
+            res.status(200).json({
+                'Message':'User Deleted'
+            })
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error:err
+            });
+        });
+
+}
