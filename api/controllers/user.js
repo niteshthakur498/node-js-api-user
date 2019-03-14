@@ -67,7 +67,7 @@ exports.listusers = (req,res,next) => {
 };
 
 exports.deleteuser = (req, res, next) => {
-    User.remove({_id:req.params.id})
+    User.deleteOne({_id:req.params.id})
         .exec()
         .then(result => {
             console.log(result);
