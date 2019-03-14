@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI||"mongodb://localhost:27017/user-api" ,
 
 
 mongoose.Promise = global.Promise;
-app.use('/user',userRoutes);
+app.use('/api/user',userRoutes);
 
 
 app.get('/',(req,res) => {

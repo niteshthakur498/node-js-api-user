@@ -70,5 +70,17 @@ exports.signup = (req,res,next) => {
 };
 
 
-
+exports.listusers = (req,res,next) => {
+    User.find({},{name:1,email:1})
+        .exec()
+        .then(result => {
+            res.send(result);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error:err
+            })
+        })
+};
 
